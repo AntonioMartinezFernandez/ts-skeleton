@@ -1,5 +1,7 @@
-import { IExampleItem } from 'ExampleModule/entities/IExampleItem';
+import { IExampleItem } from '@src/ExampleModule/entity/IExampleItem';
+import { injectable } from 'inversify';
 
+@injectable()
 export class MemoryDB {
   data: IExampleItem[] = [];
 

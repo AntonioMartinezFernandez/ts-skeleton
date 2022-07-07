@@ -22,4 +22,14 @@ export default {
 
   // Find test files ended in spec and test with extensions .js and .ts
   testMatch: ['**/__tests__/**/*.[jt]s?(x)', '**/?(*.)+(spec|test).[jt]s?(x)'],
+
+  // Path Mapper
+  moduleNameMapper: {
+    '^@src/(.*)$': '<rootDir>/src/$1',
+    '^@config/(.*)$': '<rootDir>/src/config/$1',
+    '^@connectors/(.*)$': '<rootDir>/src/connectors/$1',
+    '^@http/(.*)$': '<rootDir>/src/http/$1',
+    '^@utils/(.*)$': '<rootDir>/src/utils/$1',
+  },
+  // Other configs
 };

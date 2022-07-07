@@ -2,7 +2,9 @@
 
 ## _Express / Typescript boilerplate for microservices and complete RESTful APIs_
 
-## **Development in progress...**
+### **Development in progress...**
+
+## Description
 
 ### Technologies
 
@@ -17,13 +19,15 @@
 
 - Clean Architecture
 - SOLID Principles
-- Service Repository pattern
+- Service Repository Pattern
 - Git commit linter
 - HTTP Requests Security
+- Body Requests validation with JSONSchema
 - Compressed HTTP Responses
-- Morgan Logger & Beautiful console messages
+- Logger & beautiful console messages
 - Configurable environment variables
-- Basic User Auth implemented
+- JWT Authentication
+- Easy to use
 
 ### Endpoints
 
@@ -34,13 +38,14 @@
 
 ### Development deploy
 
+0. Navigate to https://github.com/AntonioMartinezFernandez/ts-skeleton and click on 'Use this template'
 1. Install git
 2. Install NodeJS and NPM
 3. Install MongoDB
 4. Open a terminal and run:
 
 ```
-# git clone https://github.com/AntonioMartinezFernandez/mini-ts-skeleton
+# git clone https://github.com/yourUser/yourRepoName
 # cd mini-ts-skeleton
 # npm install
 ```

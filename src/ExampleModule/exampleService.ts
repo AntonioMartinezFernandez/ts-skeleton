@@ -1,7 +1,7 @@
 import { injectable } from 'inversify';
-import { IStoreExampleItemDTO } from './dtos/IStoreExampleItemDTO';
-import { IUpdateExampleItemDTO } from './dtos/IUpdateExampleItemDTO';
-import { ExampleRepository } from './example-repository';
+import { IStoreExampleItemDTO } from './dto/IStoreExampleItemDto';
+import { IUpdateExampleItemDTO } from './dto/IUpdateExampleItemDto';
+import { ExampleRepository } from './exampleRepository';
 
 @injectable()
 export class ExampleService {

@@ -1,19 +1,21 @@
 import { injectable } from 'inversify';
 
-import { IExampleItem } from './entities/IExampleItem';
-import { IStoreExampleItemDTO } from './dtos/IStoreExampleItemDTO';
-import { Uuid } from '../Utils/Uuid/Uuid';
-import { MemoryDB } from '../database/memory/MemoryDB';
-import { IUpdateExampleItemDTO } from './dtos/IUpdateExampleItemDTO';
+import { Uuid } from '@utils/Uuid/uuid';
+import { MemoryDB } from '@connectors/MemoryDB';
+
+import { IExampleItem } from './entity/IExampleItem';
+import { IStoreExampleItemDTO } from './dto/IStoreExampleItemDto';
+import { IUpdateExampleItemDTO } from './dto/IUpdateExampleItemDto';
+import { IExampleItemRepository } from './dao/IExampleItemRepository';
 
 @injectable()
-export class ExampleRepository {
+export class ExampleRepository implements IExampleItemRepository {
   constructor(
     private readonly _uuid: Uuid,
     private readonly _data = new MemoryDB(),
   ) {}
 
-  async findAll() {
+  async findAll(): Promise<IExampleItem[]> {
     return this._data.findAll();
   }
 
