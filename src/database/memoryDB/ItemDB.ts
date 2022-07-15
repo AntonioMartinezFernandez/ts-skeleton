@@ -2,29 +2,29 @@ import { IExampleItem } from '@src/ExampleModule/entity/IExampleItem';
 import { injectable } from 'inversify';
 
 @injectable()
-export class MemoryDB {
-  data: IExampleItem[] = [];
+export class ItemDB {
+  item: IExampleItem[] = [];
 
   findAll(): IExampleItem[] {
-    return this.data;
+    return this.item;
   }
 
   findById(id: string): IExampleItem | undefined {
-    const item: IExampleItem | undefined = this.data.find(
+    const item: IExampleItem | undefined = this.item.find(
       (item) => item.id === id,
     );
     return item;
   }
 
   save(item: IExampleItem): IExampleItem {
-    this.data.push(item);
+    this.item.push(item);
     return item;
   }
 
   update(item: IExampleItem): IExampleItem | undefined {
     let found = false;
 
-    this.data = this.data.map((element) => {
+    this.item = this.item.map((element) => {
       if (element.id === item.id) {
         element.name = item.name;
         found = true;
@@ -37,11 +37,11 @@ export class MemoryDB {
   }
 
   delete(id: string): IExampleItem | undefined {
-    const item: IExampleItem | undefined = this.data.find(
+    const item: IExampleItem | undefined = this.item.find(
       (item) => item.id === id,
     );
 
-    this.data = this.data.filter((e) => e.id !== id);
+    this.item = this.item.filter((e) => e.id !== id);
 
     return item;
   }

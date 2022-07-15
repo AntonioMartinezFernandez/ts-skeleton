@@ -14,15 +14,22 @@ import chalk from 'chalk';
 
 // Controllers
 import '@src/ExampleModule/exampleController';
+import '@src/UserModule/userController';
+import { mongodbConnect } from '@src/database/mongoDB/mongodbConnector';
 
 // Http Server
 export class HttpServer {
   private serverBuilder: InversifyExpressServer;
   private server: express.Application | undefined;
+  private connectMongoDB = false;
 
   constructor(private readonly container: Container) {
     this.serverBuilder = new InversifyExpressServer(this.container);
     console.clear();
+  }
+
+  mongoDB() {
+    this.connectMongoDB = true;
   }
 
   config() {
@@ -45,7 +52,16 @@ export class HttpServer {
     console.log(chalk.yellow('Server application builded...'));
   }
 
-  start() {
+  async start() {
+    if (this.connectMongoDB) {
+      try {
+        await mongodbConnect();
+        console.log(chalk.yellow('MongoDB connected...'));
+      } catch (err) {
+        console.log(chalk.red('MongoDB ERROR...'));
+      }
+    }
+
     if (this.server) {
       this.server.listen(PORT, () => {
         console.log(chalk.blueBright(`======== ENV: ${NODE_ENV} ========`));

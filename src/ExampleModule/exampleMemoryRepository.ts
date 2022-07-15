@@ -1,7 +1,7 @@
 import { injectable } from 'inversify';
 
 import { Uuid } from '@utils/Uuid/uuid';
-import { MemoryDB } from '@connectors/MemoryDB';
+import { ItemDB } from '@src/database/memoryDB/ItemDB';
 
 import { IExampleItem } from './entity/IExampleItem';
 import { IStoreExampleItemDTO } from './dto/IStoreExampleItemDto';
@@ -9,10 +9,10 @@ import { IUpdateExampleItemDTO } from './dto/IUpdateExampleItemDto';
 import { IExampleItemRepository } from './dao/IExampleItemRepository';
 
 @injectable()
-export class ExampleRepository implements IExampleItemRepository {
+export class ExampleMemoryRepository implements IExampleItemRepository {
   constructor(
     private readonly _uuid: Uuid,
-    private readonly _data = new MemoryDB(),
+    private readonly _data = new ItemDB(),
   ) {}
 
   async findAll(): Promise<IExampleItem[]> {

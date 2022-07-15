@@ -16,19 +16,22 @@ export class AuthMiddleware extends BaseMiddleware {
   ) {
     const authHeader = req.headers.authorization;
     let authToken: string | undefined = undefined;
+    let decryptedToken: Record<string, unknown> | undefined = undefined;
+
     if (authHeader && authHeader.startsWith('Bearer ')) {
       authToken = authHeader.substring(7, authHeader.length);
     }
 
-    if (!authToken) {
+    if (authToken) {
+      decryptedToken = this._jwt.decrypt(authToken);
+    }
+
+    if (!decryptedToken || decryptedToken.error) {
       const httpError = new HttpException('Authentication Error', 401);
       res.status(httpError.statusCode).send(httpError.message);
     } else {
-      console.log('Auth Token parsed in AuthMiddleware: ', authToken);
-      req.body.authToken = authToken;
+      req.body.user = decryptedToken.payload;
       next();
     }
   }
 }
-
-//TODO Develop and test this Middleware

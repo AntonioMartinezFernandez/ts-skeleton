@@ -22,7 +22,6 @@ export class JWT implements IJwt {
       tokenData = jsonwebtoken.verify(token, SECRET_KEY);
       if (typeof tokenData === 'string') {
         tokenData = JSON.parse(tokenData);
-        tokenData = tokenData;
       }
     } catch (error) {
       tokenData = { error: 'Invalid token' };

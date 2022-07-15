@@ -27,7 +27,7 @@ export default {
   moduleNameMapper: {
     '^@src/(.*)$': '<rootDir>/src/$1',
     '^@config/(.*)$': '<rootDir>/src/config/$1',
-    '^@connectors/(.*)$': '<rootDir>/src/connectors/$1',
+    '^@database/(.*)$': '<rootDir>/src/database/$1',
     '^@http/(.*)$': '<rootDir>/src/http/$1',
     '^@utils/(.*)$': '<rootDir>/src/utils/$1',
   },

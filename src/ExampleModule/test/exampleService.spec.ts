@@ -1,10 +1,9 @@
-require('module-alias/register');
 import 'reflect-metadata';
 
 import { ExampleService } from '../exampleService';
-import { ExampleRepository } from '../exampleRepository';
+import { ExampleMemoryRepository } from '../exampleMemoryRepository';
 
-// ExampleRepository Mocked
+// ExampleMemoryRepository Mocked
 const mockedRepository = {
   findAll: jest.fn(),
   findById: jest.fn(),
@@ -15,7 +14,7 @@ const mockedRepository = {
 
 // SuT
 const sut = new ExampleService(
-  mockedRepository as unknown as ExampleRepository,
+  mockedRepository as unknown as ExampleMemoryRepository,
 );
 
 // Unit Tests Suite

@@ -1,10 +1,9 @@
-require('module-alias/register');
 import 'reflect-metadata';
 
 import { ExampleService } from '../exampleService';
-import { ExampleRepository } from '../exampleRepository';
-import { MemoryDB } from '../../connectors/MemoryDB';
-import { Uuid } from '../../utils/Uuid/uuid';
+import { ExampleMemoryRepository } from '../exampleMemoryRepository';
+import { ItemDB } from '@src/database/memoryDB/ItemDB';
+import { Uuid } from '@src/utils/Uuid/uuid';
 
 // Uuid Class Mocked
 const spyGenerate = jest.spyOn(new Uuid(), 'generate');
@@ -19,7 +18,7 @@ const uuidRegex =
 
 // SuT
 const sut = new ExampleService(
-  new ExampleRepository(mockUuid as unknown as Uuid, new MemoryDB()),
+  new ExampleMemoryRepository(mockUuid as unknown as Uuid, new ItemDB()),
 );
 
 // Integration Tests Suite

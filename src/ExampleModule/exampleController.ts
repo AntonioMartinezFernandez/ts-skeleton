@@ -5,17 +5,12 @@ import {
   response,
 } from 'inversify-express-utils';
 import { Request, Response } from 'express';
-
 import { BaseController } from '@src/http/controllers/BaseController';
-
 import { ExampleService } from './exampleService';
-
-import { ExampleMiddleware } from '@http/middleware/exampleMiddleware';
-
 import { IStoreExampleItemDTO } from './dto/IStoreExampleItemDto';
 import { IUpdateExampleItemDTO } from './dto/IUpdateExampleItemDto';
-import { updateExampleItemDTO } from './dto/updateExampleItemDto';
-import { storeExampleItemDTO } from './dto/storeExampleItemDto';
+import { updateExampleItemDTO } from './dto/ValidateUpdateExampleItemDto';
+import { storeExampleItemDTO } from './dto/ValidateStoreExampleItemDto';
 
 @controller('/example')
 export class ExampleController extends BaseController {
@@ -23,7 +18,7 @@ export class ExampleController extends BaseController {
     super();
   }
 
-  @httpMethod('get', '/', ExampleMiddleware) //! Middleware Example
+  @httpMethod('get', '/')
   async index(@response() res: Response) {
     const response = await this._exampleService.index();
     this.ok(res, response);
@@ -33,8 +28,11 @@ export class ExampleController extends BaseController {
   async find(@request() req: Request, @response() res: Response) {
     const id = req.params.id as string;
     const response = await this._exampleService.find(id);
-    if (response === undefined) this.notFound(res);
-    this.ok(res, response);
+    if (response === undefined) {
+      this.notFound(res);
+    } else {
+      this.ok(res, response);
+    }
   }
 
   @httpMethod('post', '/store', storeExampleItemDTO)

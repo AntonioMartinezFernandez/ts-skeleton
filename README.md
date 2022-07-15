@@ -31,10 +31,12 @@
 
 ### Endpoints
 
-- **GET /** - _Public access_
-- **POST /auth/signup** - _Register a new user_
-- **POST /auth/login** - _Login user and return JWT token_
-- **GET /protected** - _Accesible only for logged users -sending Bearer Token in the HTTP request-_
+- **GET /user** - _Public access_
+- **POST /user/signup** - _Register a new user_
+- **POST /user/login** - _Login user and return JWT token_
+- **PUT /user/profile** - _Update user profile. Accesible only for logged users -sending Bearer Token in the HTTP request-_
+- **GET /user/profile** - _Return user profile. Accesible only for logged users -sending Bearer Token in the HTTP request-_
+- **DELETE /user** - _Delete user. Accesible only for logged users -sending Bearer Token in the HTTP request-_
 
 ### Development deploy
 

@@ -6,7 +6,7 @@ import { addAliases } from 'module-alias';
 addAliases({
   '@src': __dirname + '/',
   '@config': __dirname + '/config',
-  '@connectors': __dirname + '/connectors',
+  '@database': __dirname + '/database',
   '@http': __dirname + '/http',
   '@utils': __dirname + '/utils',
 });
@@ -21,4 +21,5 @@ const httpServer = new HttpServer(container);
 
 httpServer.config();
 httpServer.build();
+httpServer.mongoDB();
 httpServer.start();
