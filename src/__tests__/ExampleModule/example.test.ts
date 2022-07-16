@@ -1,6 +1,5 @@
 import 'reflect-metadata';
 
-import { jest, describe, it, expect } from '@jest/globals';
 import { ExampleService } from '@src/ExampleModule/exampleService';
 import { ExampleMemoryRepository } from '@src/ExampleModule/exampleMemoryRepository';
 import { ItemDB } from '@database/memoryDB/ItemDB';

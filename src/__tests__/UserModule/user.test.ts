@@ -1,6 +1,5 @@
 import 'reflect-metadata';
 
-import { jest, describe, it, test, expect } from '@jest/globals';
 import { UserService } from '@src/UserModule/userService';
 import { UserMemoryRepository } from '@src/UserModule/userMemoryRepository';
 import { UserDB } from '@src/database/memoryDB/UserDB';

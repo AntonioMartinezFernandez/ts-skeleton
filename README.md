@@ -43,7 +43,7 @@
 0. Navigate to https://github.com/AntonioMartinezFernandez/ts-skeleton and click on 'Use this template'
 1. Install git
 2. Install NodeJS and NPM
-3. Install MongoDB
+3. Install Docker
 4. Open a terminal and run:
 
 ```
@@ -56,6 +56,7 @@
 6. Open the terminal and run:
 
 ```
+# docker compose up -d
 # npm run dev
 ```
 
