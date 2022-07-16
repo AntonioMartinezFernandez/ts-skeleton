@@ -1,6 +1,6 @@
 import { injectable } from 'inversify';
 
-import { Uuid } from '@utils/Uuid/uuid';
+import { Uuid } from '@src/utils/Uuid/Uuid';
 import { ItemDB } from '@src/database/memoryDB/ItemDB';
 
 import { IExampleItem } from './entity/IExampleItem';

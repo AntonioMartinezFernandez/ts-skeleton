@@ -1,7 +1,7 @@
 import express from 'express';
 import { injectable } from 'inversify';
 import { BaseMiddleware } from 'inversify-express-utils';
-import { JWT } from '@utils/JWT/jwt';
+import { JWT } from '@src/utils/JWT/jwt';
 import { HttpException } from '@http/exceptions/httpException';
 
 @injectable()

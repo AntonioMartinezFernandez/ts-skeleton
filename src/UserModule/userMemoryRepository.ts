@@ -1,6 +1,6 @@
 import { injectable } from 'inversify';
 
-import { Uuid } from '@utils/Uuid/uuid';
+import { Uuid } from '@src/utils/Uuid/Uuid';
 import { UserDB } from '@src/database/memoryDB/UserDB';
 
 import { IUser } from './entity/IUser';

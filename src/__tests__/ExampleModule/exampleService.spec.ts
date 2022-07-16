@@ -1,7 +1,8 @@
 import 'reflect-metadata';
 
-import { ExampleService } from '../exampleService';
-import { ExampleMemoryRepository } from '../exampleMemoryRepository';
+import { jest, describe, it, expect } from '@jest/globals';
+import { ExampleService } from '@src/ExampleModule/exampleService';
+import { ExampleMemoryRepository } from '@src/ExampleModule/exampleMemoryRepository';
 
 // ExampleMemoryRepository Mocked
 const mockedRepository = {

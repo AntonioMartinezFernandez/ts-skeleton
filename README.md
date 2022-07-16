@@ -24,7 +24,7 @@
 - HTTP Requests Security
 - Body Requests validation with JSONSchema
 - Compressed HTTP Responses
-- Logger & beautiful console messages
+- Logger
 - Configurable environment variables
 - JWT Authentication
 - Easy to use

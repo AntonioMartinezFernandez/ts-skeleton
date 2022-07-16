@@ -1,9 +1,10 @@
 import 'reflect-metadata';
 
-import { UserService } from '../userService';
-import { UserMemoryRepository } from '../userMemoryRepository';
+import { jest, describe, it, test, expect } from '@jest/globals';
+import { UserService } from '@src/UserModule/userService';
+import { UserMemoryRepository } from '@src/UserModule/userMemoryRepository';
 import { UserDB } from '@src/database/memoryDB/UserDB';
-import { Uuid } from '@src/utils/Uuid/uuid';
+import { Uuid } from '@src/utils/Uuid/Uuid';
 import { Bcrypt } from '@src/utils/Bcrypt/bcrypt';
 import { JWT } from '@src/utils/JWT/jwt';
 

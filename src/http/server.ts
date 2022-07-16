@@ -10,7 +10,6 @@ import helmet from 'helmet';
 import hpp from 'hpp';
 import compression from 'compression';
 import morgan from 'morgan';
-import chalk from 'chalk';
 
 // Controllers
 import '@src/ExampleModule/exampleController';
@@ -44,29 +43,28 @@ export class HttpServer {
       app.use(compression());
     });
 
-    console.log(chalk.yellow('Server configuration loaded...'));
+    console.log('Server configuration loaded...');
   }
 
   build() {
     this.server = this.serverBuilder.build();
-    console.log(chalk.yellow('Server application builded...'));
   }
 
   async start() {
     if (this.connectMongoDB) {
       try {
         await mongodbConnect();
-        console.log(chalk.yellow('MongoDB connected...'));
+        console.log('MongoDB connected...');
       } catch (err) {
-        console.log(chalk.red('MongoDB ERROR...'));
+        console.log('MongoDB ERROR...');
       }
     }
 
     if (this.server) {
       this.server.listen(PORT, () => {
-        console.log(chalk.blueBright(`======== ENV: ${NODE_ENV} ========`));
-        console.log(chalk.blueBright(` 🚀 Server listening on port ${PORT}`));
-        console.log(chalk.blueBright(`==================================`));
+        console.log(`======== ENV: ${NODE_ENV} ========`);
+        console.log(` 🚀 Server listening on port ${PORT}`);
+        console.log(`==================================`);
       });
     } else {
       console.log('ERROR: Server should be builded before start');
