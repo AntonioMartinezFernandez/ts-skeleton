@@ -14,7 +14,7 @@ import morgan from 'morgan';
 // Controllers
 import '@src/ExampleModule/exampleController';
 import '@src/UserModule/userController';
-import { mongodbConnect } from '@src/database/mongoDB/mongodbConnector';
+import { mongodbConnect } from '@database/mongoDB/mongodbConnector';
 
 // Http Server
 export class HttpServer {

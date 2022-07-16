@@ -2,10 +2,10 @@ import 'reflect-metadata';
 
 import { UserService } from '@src/UserModule/userService';
 import { UserMemoryRepository } from '@src/UserModule/userMemoryRepository';
-import { UserDB } from '@src/database/memoryDB/UserDB';
-import { Uuid } from '@src/utils/Uuid/Uuid';
-import { Bcrypt } from '@src/utils/Bcrypt/bcrypt';
-import { JWT } from '@src/utils/JWT/jwt';
+import { UserDB } from '@database/memoryDB/UserDB';
+import { Uuid } from '@utilities/Uuid/Uuid';
+import { Bcrypt } from '@utilities/Bcrypt/bcrypt';
+import { JWT } from '@utilities/JWT/jwt';
 
 // Mocks
 const spyGenerate = jest.spyOn(new Uuid(), 'generate');

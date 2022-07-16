@@ -8,7 +8,7 @@ addAliases({
   '@config': __dirname + '/config',
   '@database': __dirname + '/database',
   '@http': __dirname + '/http',
-  '@utils': __dirname + '/utils',
+  '@utilities': __dirname + '/utilities',
 });
 
 // IoC Container

@@ -1,7 +1,7 @@
 import { injectable } from 'inversify';
 
-import { Uuid } from '@src/utils/Uuid/Uuid';
-import { ItemDB } from '@src/database/memoryDB/ItemDB';
+import { Uuid } from '@utilities/Uuid/Uuid';
+import { ItemDB } from '@database/memoryDB/ItemDB';
 
 import { IExampleItem } from './entity/IExampleItem';
 import { IStoreExampleItemDTO } from './dto/IStoreExampleItemDto';

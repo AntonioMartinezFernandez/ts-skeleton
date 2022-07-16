@@ -29,7 +29,7 @@ export default {
     '^@config/(.*)$': '<rootDir>/src/config/$1',
     '^@database/(.*)$': '<rootDir>/src/database/$1',
     '^@http/(.*)$': '<rootDir>/src/http/$1',
-    '^@utils/(.*)$': '<rootDir>/src/utils/$1',
+    '^@utilities/(.*)$': '<rootDir>/src/utilities/$1',
   },
   // Other configs
 };

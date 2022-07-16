@@ -3,7 +3,7 @@ import 'reflect-metadata';
 import { ExampleService } from '@src/ExampleModule/exampleService';
 import { ExampleMemoryRepository } from '@src/ExampleModule/exampleMemoryRepository';
 import { ItemDB } from '@database/memoryDB/ItemDB';
-import { Uuid } from '@utils/Uuid/Uuid';
+import { Uuid } from '@utilities/Uuid/Uuid';
 
 // Uuid Class Mocked
 const spyGenerate = jest.spyOn(new Uuid(), 'generate');

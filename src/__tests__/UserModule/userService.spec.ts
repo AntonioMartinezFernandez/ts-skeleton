@@ -2,7 +2,7 @@ import 'reflect-metadata';
 
 import { UserService } from '@src/UserModule/userService';
 import { UserMemoryRepository } from '@src/UserModule/userMemoryRepository';
-import { JWT } from '@src/utils/JWT/jwt';
+import { JWT } from '@utilities/JWT/jwt';
 
 // Uuid regex
 const hashedPasswordRegex = /^.{60}$/;

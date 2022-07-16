@@ -14,9 +14,9 @@ import { storeExampleItemDTO } from './ExampleModule/dto/ValidateStoreExampleIte
 import { updateUserDTO } from './UserModule/dto/ValidateUpdateUserDto';
 import { storeUserDTO } from './UserModule/dto/ValidateStoreUserDto';
 
-import { Uuid } from '@src/utils/Uuid/Uuid';
-import { JWT } from '@src/utils/JWT/jwt';
-import { Bcrypt } from '@src/utils/Bcrypt/bcrypt';
+import { Uuid } from '@utilities/Uuid/Uuid';
+import { JWT } from '@utilities/JWT/jwt';
+import { Bcrypt } from '@utilities/Bcrypt/bcrypt';
 
 const container = new Container({ defaultScope: 'Singleton' });
 

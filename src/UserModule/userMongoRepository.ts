@@ -1,6 +1,6 @@
 import { injectable } from 'inversify';
 
-import { Uuid } from '@src/utils/Uuid/Uuid';
+import { Uuid } from '@utilities/Uuid/Uuid';
 import { userModel } from '@database/mongoDB/models/User';
 
 import { IUser } from './entity/IUser';

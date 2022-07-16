@@ -1,11 +1,11 @@
 import { injectable } from 'inversify';
 import { IStoreUserDTO } from './dto/IStoreUserDto';
 import { IUpdateUserDTO } from './dto/IUpdateUserDto';
-import { Bcrypt } from '@src/utils/Bcrypt/bcrypt';
-import { JWT } from '@src/utils/JWT/jwt';
+import { Bcrypt } from '@utilities/Bcrypt/bcrypt';
+import { JWT } from '@utilities/JWT/jwt';
 import { IProfileUserDTO } from './dto/IProfileUserDto';
 import { UserMemoryRepository } from './userMemoryRepository';
-import { UserMongoRepository } from './userMongoRepository';
+//import { UserMongoRepository } from './userMongoRepository';
 
 @injectable()
 export class UserService {
