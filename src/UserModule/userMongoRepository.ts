@@ -47,39 +47,53 @@ export class UserMongoRepository implements IUserRepository {
     const dbUser = await this._data.findOne({ id: user.id }).exec();
 
     if (dbUser) {
-      user.birthdate ? (dbUser.birthdate = user.birthdate) : null;
-      user.name ? (dbUser.name = user.name) : null;
-      user.surname ? (dbUser.surname = user.surname) : null;
-      user.phone ? (dbUser.phone = user.phone) : null;
-      user.town ? (dbUser.town = user.town) : null;
-      user.city ? (dbUser.city = user.city) : null;
-      user.country ? (dbUser.country = user.country) : null;
-      user.password ? (dbUser.password = user.password) : null;
-      dbUser.save();
-    }
+      try {
+        user.birthdate ? (dbUser.birthdate = user.birthdate) : null;
+        user.name ? (dbUser.name = user.name) : null;
+        user.surname ? (dbUser.surname = user.surname) : null;
+        user.phone ? (dbUser.phone = user.phone) : null;
+        user.town ? (dbUser.town = user.town) : null;
+        user.city ? (dbUser.city = user.city) : null;
+        user.country ? (dbUser.country = user.country) : null;
+        user.password ? (dbUser.password = user.password) : null;
 
-    if (dbUser === null) {
-      return undefined;
+        await dbUser.save();
+
+        return {
+          id: dbUser.id,
+          name: dbUser.name,
+          surname: dbUser.surname,
+          email: dbUser.email,
+          phone: dbUser.phone,
+          town: dbUser.town,
+          city: dbUser.city,
+          country: dbUser.country,
+          birthdate: dbUser.birthdate,
+          rol: dbUser.rol,
+        };
+      } catch (error) {
+        return undefined;
+      }
     } else {
-      return {
-        id: dbUser.id,
-        name: dbUser.name,
-        surname: dbUser.surname,
-        email: dbUser.email,
-        phone: dbUser.phone,
-        town: dbUser.town,
-        city: dbUser.city,
-        country: dbUser.country,
-        birthdate: dbUser.birthdate,
-        rol: dbUser.rol,
-      };
+      return undefined;
     }
   }
 
   async delete(id: string): Promise<IUser | undefined> {
-    let deletedUser: IUser | null | undefined =
-      await this._data.findOneAndDelete({ id: id });
-    deletedUser === null ? (deletedUser = undefined) : null;
-    return deletedUser;
+    try {
+      const deletedUser = await this._data.findOneAndDelete({ id: id });
+      return deletedUser as IUser;
+    } catch (error) {
+      return undefined;
+    }
+  }
+
+  async deleteAll(): Promise<undefined> {
+    try {
+      await this._data.deleteMany({});
+      return undefined;
+    } catch (error) {
+      console.log(error);
+    }
   }
 }

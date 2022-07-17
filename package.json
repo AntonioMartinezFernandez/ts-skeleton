@@ -9,7 +9,7 @@
     "start": "cross-env NODE_ENV=production node ./dist/start.js",
     "lint": "eslint \"{src,test}/**/*.ts\"",
     "lint:fix": "eslint \"{src,test}/**/*.ts\" --fix",
-    "test": "jest --watchAll",
+    "test": "jest",
     "test:unit": "jest --config=jest.config.unit.ts",
     "test:integration": "jest --config=jest.config.integration.ts",
     "test:coverage": "jest --coverage"

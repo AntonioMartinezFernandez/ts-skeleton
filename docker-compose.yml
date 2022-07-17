@@ -1,19 +1,39 @@
 version: '3.1'
 
 services:
+  node-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    depends_on:
+      - mongodb
+    container_name: node-app
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=production
+      - PORT=8080
+      - MONGODB_USER=myuser
+      - MONGODB_PASSWORD=mypassword
+      - MONGODB_SERVER=mongodb
+      - MONGODB_PORT=27017
+      - MONGODB_DBNAME=admin
+    ports:
+      - "8080:8080"
+    networks:
+      - app-network
+
   mongodb:
     image: mongo:4.4.15
     container_name: mongodb
     restart: unless-stopped
-    env_file: development.env
     environment:
-      MONGO_INITDB_ROOT_USERNAME: $MONGODB_USER
-      MONGO_INITDB_ROOT_PASSWORD: $MONGODB_PASSWORD
+      MONGO_INITDB_ROOT_USERNAME: myuser
+      MONGO_INITDB_ROOT_PASSWORD: mypassword
     ports:
       - "27017:27017"
     networks:
-      - development-network
+      - app-network
 
 networks:
-  development-network:
+  app-network:
     driver: bridge

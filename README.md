@@ -38,13 +38,28 @@
 - **GET /user/profile** - _Return user profile. Accesible only for logged users -sending Bearer Token in the HTTP request-_
 - **DELETE /user** - _Delete user. Accesible only for logged users -sending Bearer Token in the HTTP request-_
 
-### Development deploy
+### Run linter
 
-0. Navigate to https://github.com/AntonioMartinezFernandez/ts-skeleton and click on 'Use this template'
-1. Install git
-2. Install NodeJS and NPM
-3. Install Docker
-4. Open a terminal and run:
+```
+# npm run lint
+```
+
+### Run tests
+
+1. Edit the _development.env_ file with correct MongoDB parameters
+2. Open a terminal and run:
+
+```
+# npm run test
+```
+
+### Development
+
+1. Navigate to https://github.com/AntonioMartinezFernandez/ts-skeleton and click on 'Use this template'
+2. Install git
+3. Install NodeJS and NPM
+4. Install MongoDB
+5. Open a terminal and run:
 
 ```
 # git clone https://github.com/yourUser/yourRepoName
@@ -52,11 +67,11 @@
 # npm install
 ```
 
-5. Edit the _development.env_ file with configuration parameters
-6. Open the terminal and run:
+6. Edit the _development.env_ file with configuration parameters
+7. Be sure that your MongoDB server is running
+8. Open the terminal and run:
 
 ```
-# docker compose up -d
 # npm run dev
 ```
 
@@ -73,6 +88,15 @@
 
 ```
 # npm start
+```
+
+### Build with Docker
+
+1. Install Docker
+2. Open a terminal, go to the root folder of the project, and run:
+
+```
+# docker compose up
 ```
 
 _Author: Antonio Martínez_

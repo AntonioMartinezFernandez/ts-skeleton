@@ -1,7 +1,7 @@
 import 'reflect-metadata';
 
 import { UserService } from '@src/UserModule/userService';
-import { UserMemoryRepository } from '@src/UserModule/userMemoryRepository';
+import { UserMongoRepository } from '@src/UserModule/userMongoRepository';
 import { JWT } from '@utilities/JWT/jwt';
 
 // Uuid regex
@@ -36,7 +36,7 @@ const mockedJwt = {
 
 // SuT
 const sut = new UserService(
-  mockedRepository as unknown as UserMemoryRepository,
+  mockedRepository as unknown as UserMongoRepository,
   mockedBcrypt,
   mockedJwt as unknown as JWT,
 );

@@ -1,11 +1,26 @@
 import 'reflect-metadata';
 
+import dotenv from 'dotenv';
+dotenv.config({ path: 'development.env' });
+
+import mongoose from 'mongoose';
 import { UserService } from '@src/UserModule/userService';
-import { UserMemoryRepository } from '@src/UserModule/userMemoryRepository';
-import { UserDB } from '@database/memoryDB/UserDB';
+import { UserMongoRepository } from '@src/UserModule/userMongoRepository';
+import { userModel } from '@database/mongoDB/models/User';
 import { Uuid } from '@utilities/Uuid/Uuid';
 import { Bcrypt } from '@utilities/Bcrypt/bcrypt';
 import { JWT } from '@utilities/JWT/jwt';
+
+// Connect MongoDB
+const mongodbConnect = async () => {
+  await mongoose.connect(
+    `mongodb://${process.env.MONGODB_USER}:${process.env.MONGODB_PASSWORD}@${process.env.MONGODB_SERVER}:${process.env.MONGODB_PORT}/${process.env.MONGODB_DBNAME}`,
+  );
+};
+
+(async function connectMongo() {
+  await mongodbConnect();
+})();
 
 // Mocks
 const spyGenerate = jest.spyOn(new Uuid(), 'generate');
@@ -29,7 +44,7 @@ const uuidRegex =
 
 // SuT
 const sut = new UserService(
-  new UserMemoryRepository(mockUuid as unknown as Uuid, new UserDB()),
+  new UserMongoRepository(mockUuid as unknown as Uuid, userModel),
   new Bcrypt(),
   mockedJwt as unknown as JWT,
 );
@@ -38,6 +53,12 @@ let userId = '';
 
 // Integration Tests Suite
 describe('Example Service and Example Repository Integration Tests', () => {
+  it('should delete all collection data and return undefined', async () => {
+    const data = await sut.deleteAll();
+
+    expect(data).toBe(undefined);
+  });
+
   it('should insert and return a new user', async () => {
     const data = await sut.store({
       email: 'my@email.com',

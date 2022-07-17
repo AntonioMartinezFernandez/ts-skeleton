@@ -4,18 +4,19 @@ import { IUpdateUserDTO } from './dto/IUpdateUserDto';
 import { Bcrypt } from '@utilities/Bcrypt/bcrypt';
 import { JWT } from '@utilities/JWT/jwt';
 import { IProfileUserDTO } from './dto/IProfileUserDto';
-import { UserMemoryRepository } from './userMemoryRepository';
-//import { UserMongoRepository } from './userMongoRepository';
+//import { UserMemoryRepository } from './userMemoryRepository';
+import { UserMongoRepository } from './userMongoRepository';
 
 @injectable()
 export class UserService {
   constructor(
-    private readonly _UserRepository: UserMemoryRepository,
+    private readonly _UserRepository: UserMongoRepository,
     private readonly _crypto: Bcrypt,
     private readonly _jwt: JWT,
   ) {}
 
   async store(user: IStoreUserDTO) {
+    //TODO If user email exists, return error
     user.password = await this._crypto.encrypt(user.password);
     return await this._UserRepository.save(user);
   }
@@ -83,5 +84,9 @@ export class UserService {
 
   async delete(id: string) {
     return await this._UserRepository.delete(id);
+  }
+
+  async deleteAll() {
+    return await this._UserRepository.deleteAll();
   }
 }

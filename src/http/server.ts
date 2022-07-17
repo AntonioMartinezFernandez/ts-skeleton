@@ -1,5 +1,5 @@
 // Environment variables
-import { NODE_ENV, PORT } from '@config/environment';
+import { ENVIRONMENT, PORT } from '@config/environment';
 
 // Dependencies
 import { InversifyExpressServer } from 'inversify-express-utils';
@@ -33,7 +33,7 @@ export class HttpServer {
 
   config() {
     this.serverBuilder.setConfig((app: any) => {
-      if (NODE_ENV !== 'production') {
+      if (ENVIRONMENT !== 'production') {
         app.use(morgan('combined'));
       }
       app.use(express.json());
@@ -62,9 +62,8 @@ export class HttpServer {
 
     if (this.server) {
       this.server.listen(PORT, () => {
-        console.log(`======== ENV: ${NODE_ENV} ========`);
+        console.log(` Environment: ${ENVIRONMENT}`);
         console.log(` 🚀 Server listening on port ${PORT}`);
-        console.log(`==================================`);
       });
     } else {
       console.log('ERROR: Server should be builded before start');
